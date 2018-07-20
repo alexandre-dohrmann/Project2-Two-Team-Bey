@@ -4,85 +4,62 @@ const User = require("../models/users.js");
 const Workout = require("../models/workout.js");
 const Exercise = require("../models/exercise.js")
 
-
-router.get('/', (req, res) => {
-  Author.find({}, (err, foundExercise) => {
-      res.render('workout/index.ejs', {
-        authors: foundAuthors
+//landing page
+router.get("/", (req, res) => {
+  Exercise.find({}, (err, foundExercise) => {
+      res.render("exercise/index.ejs", {
+        exercise: foundExercise
       });
   });
-
 });
 
-router.get('/new', (req, res) => {
-  res.render('workout/new.ejs');
+//new route
+router.get("/new", (req, res) => {
+  res.render("exercise/new.ejs");
 });
 
-
-router.get('/:id', (req, res) => {
-  Author.findById(req.params.id, (err, foundAuthor) => {
-    res.render('workout/show.ejs', {
-      author: foundAuthor
+//show route --detailed page
+router.get("/:id", (req, res) => {
+  Exercise.findById(req.params.id, (err, foundExercise) => {
+    res.render("exercise/show.ejs", {
+     exercise: foundExercise
     });
   });
 });
 
-router.get('/:id/edit', (req, res) => {
-
-  Author.findById(req.params.id, (err, foundAuthor) => {
-    res.render('authors/edit.ejs', {
-      author: foundAuthor
+//Edit Route
+router.get("/:id/edit", (req, res) => {
+  Exercise.findById(req.params.id, (err, foundExercise) => {
+    res.render("exercise/edit.ejs", {
+     exercise: foundExercise
     });
   });
-
 });
 
-router.put('/:id', (req, res) => {
-  Author.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedAuthor)=> {
-    console.log(updatedAuthor, ' this is updatedAuthor');
-    res.redirect('/authors');
+//Update Route
+router.put("/:id", (req, res) => {
+  Exercise.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedExercise)=> {
+    console.log(updatedExercise, " this is the updatedExercise");
+    res.redirect("/exercise");
   });
 });
 
-
-router.post('/', (req, res) => {
+//Create Route
+router.post("/", (req, res) => {
   console.log(req.body)
-  Author.create(req.body, (err, createdAuthor) => {
-    console.log(createdAuthor, ' this is the createdAuthor');
-    res.redirect('/authors');
+  Exercise.create(req.body, (err, createdExercise) => {
+    console.log(createdExercise, " this is the createdExercise");
+    res.redirect("/exercise");
   });
 
 });
 
-// DELETE AN AUTHOR DELETE THE ASSOCIATED ARTICLES
-router.delete('/:id', (req, res) => {
-
-  Author.findByIdAndRemove(req.params.id, (err, deletedAuthor) => {
-    console.log(deletedAuthor, ' this is deletedAuthor');
-    // We are collecting all of the Article Ids from the deletedAuthors
-    // articles property
-    const articleIds = [];
-    for(let i = 0; i < deletedAuthor.articles.length; i++){
-      articleIds.push(deletedAuthor.articles[i].id);
-    }
-
-    Article.remove({
-      _id: { $in: articleIds}
-    }, (err, data) => {
-      res.redirect('/authors')
+// Delete Route
+router.delete("/:id", (req, res) => {
+  Exercise.findByIdAndRemove(req.params.id, (err, deletedExercise) => {
+    console.log(deletedExercise, " this is the deletedExercise");
+      res.redirect("/exercise")
     });
   });
-});
-
-
-
-module.exports = router;
-
-
-
-
-
-
-
 
 module.exports = router;

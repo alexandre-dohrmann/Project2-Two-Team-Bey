@@ -18,7 +18,7 @@ router.get("/new", (req, res) => {
   res.render("user/new.ejs");
 });
 
-//SEARCH Route
+//SHOW Route --detailed page
 router.get("/:id", (req, res) => {
   User.findById(req.params.id, (err, foundUser) => {
     res.render("user/show.ejs", {

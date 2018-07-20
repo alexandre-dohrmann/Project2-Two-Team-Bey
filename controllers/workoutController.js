@@ -19,7 +19,7 @@ router.get("/new", (req, res) => {
   res.render("workout/new.ejs");
 });
 
-//SEARCH Route
+//Show Route--detailed page
 router.get("/:id", (req, res) => {
   Workout.findById(req.params.id, (err, foundWorkout) => {
     res.render("workout/show.ejs", {
