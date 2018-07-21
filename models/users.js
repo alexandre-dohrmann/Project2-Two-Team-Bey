@@ -11,5 +11,4 @@ const userSchema = new mongoose.Schema({
   workouts: [Workout.schema]
 });
 
-
 module.exports = mongoose.model("User", userSchema);

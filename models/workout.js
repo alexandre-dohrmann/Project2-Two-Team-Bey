@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const Exercise = require("./exercise");
 
-
 const workoutSchema = new mongoose.Schema({
   catagory: String, //Bro Split - Upper, Bro Split - Lower, Full Body, Mobility, Core
   trainingPhase: String, //deload, stabilization endurance, strength endurance, hypertrophy, maximal strength, power
