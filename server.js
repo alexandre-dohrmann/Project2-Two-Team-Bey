@@ -1,8 +1,8 @@
-const express        = require('express');
-const app            = express();
-const bodyParser     = require('body-parser');
+const express = require('express');
+const app = express();
+const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const session        = require('express-session');
+const session = require('express-session');
 require('./db/db');
 
 app.use(session({
@@ -17,10 +17,9 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 app.use((req, res, next) => {
   next()
-//   // if not logged you can redirect wherever you want
 });
 
-const userController   = require('./controllers/auth');
+const userController   = require('./controllers/authController');
 
 app.use('/auth', userController);
 
