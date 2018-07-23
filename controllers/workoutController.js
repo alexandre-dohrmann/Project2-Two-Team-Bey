@@ -8,9 +8,9 @@ const Workout = require("../models/workout.js");
 //Landing page route
 router.get("/", (req, res) => {
 	Workout.find({}, (err, foundWorkout) => {
-      res.render("workout/index.ejs", {
-        workout: foundWorkout
-      });
+    res.render("workout/index.ejs", {
+      workout: foundWorkout
+    });
   });
 });
 
