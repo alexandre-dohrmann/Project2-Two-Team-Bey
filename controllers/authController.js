@@ -50,6 +50,9 @@ router.post('/register', (req, res) => {
   userDbEntry.password = passwordHash;
   //Creating entry into the Database.
   User.create(userDbEntry, (err, user) => {
+    if (err) {
+      console.log(err)
+    }
     req.session.username = user.username;
     req.session.loggedIn = true; 
     res.redirect('/user')

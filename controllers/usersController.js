@@ -5,13 +5,20 @@ const Workout = require("../models/workout.js");
 const Exercise = require("../models/exercise.js");
 
 //Landing page route
-router.get("/", (req, res) => {
-  User.find({}, (err, foundUser) => {
-      res.render("user/index.ejs", {
-        user: foundUser
+
+router.get('/', async (req, res)=>{
+  try  {
+    const foundUser = await User.find({});
+    const foundWorkout = await Workout.find({});
+      res.render('user/index.ejs', {
+        user: foundUser,
+        username: req.session.username,
+        workout: foundWorkout,
       });
-  });
-});
+  } catch (err){
+    res.send(err);
+  }
+})
 
 //NEW route
 router.get("/new", (req, res) => {
@@ -19,7 +26,7 @@ router.get("/new", (req, res) => {
 });
 
 //SHOW Route --detailed page
-router.get("/:id", (req, res) => {
+router.get("/:id/show", (req, res) => {
   User.findById(req.params.id, (err, foundUser) => {
     res.render("user/show.ejs", {
       user: foundUser
