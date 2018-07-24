@@ -16,8 +16,6 @@
       <nav>
         <ul>
           <li>
-          </li>
-          <li>
             <a href="/workout/new">Create a new Workout</a>
           </li>
           <li>
@@ -31,8 +29,11 @@
       <ul>
         <% for(let i = 0; i < workout.length; i++){ %>
           <li>
-            <a href="/workout/<%=workout[i]._id%>"><%=workout[i].name%></a>
-            <a href="/workout/<%=workout[i]._id%>/edit"><button type="submit">Build/Edit</button></a>
+            <a href="/workout/<%=workout[i]._id%>"><%=workout[i].name%></a><br/>
+            <a href="/workout/<%=workout[i]._id%>/edit"><button type="submit">Edit</button></a>
+            <form method="POST" action="/workout/<%=workout[i]._id%>?_method=DELETE">
+             <button type="submit">DELETE</button>
+            </form>
           </li>
         <% } %>
       </ul>

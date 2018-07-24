@@ -17,7 +17,7 @@ router.get("/", (req, res) => {
     }else{
 
     }
-    res.render("user/index.ejs", {
+    res.render("workout/index.ejs", {//changed this
       workout: allWorkouts,
       users: foundUser
     });
@@ -27,16 +27,23 @@ router.get("/", (req, res) => {
 
 //Create Route
 router.post("/",(req, res) => {
-  Workout.create(req.body, (err, createdWorkout) => {
-    if (err){
-    console.log(err)//see terminal
-    res.send(err);//see browser
-    }else{
-      console.log(createdWorkout)
-      res.redirect("/workout");
-    }
-  });
-}); 
+  Workout.create({
+                  name: req.body.name, 
+                  category: req.body.category,
+                  trainingPhase: req.body.trainingPhase, 
+                  sets: req.body.sets,
+                  reps: req.body.reps, 
+                  exercises: [Exercise.schema]
+                }, (err, createdWorkout) => {
+                  if (err){
+                    console.log(err)
+                    res.send(err)
+                }else{
+                  console.log(createdWorkout)
+                  res.redirect("/workout");
+                }
+});
+});  
 
 
 //NEW route
@@ -57,30 +64,21 @@ router.get("/new", (req, res) => {
 
 //Edit Route
 router.get("/:id/edit", (req, res) => {
-  Workout.create({
-                  name: req.body.name, 
-                  category: req.body.category,
-                  trainingPhase: req.body.trainingPhase, 
-                  sets: req.body.sets,
-                  reps: req.body.reps, 
-                  exercises: [Exercise.schema]
-                }, (err, createdWorkout) => {
   
  Workout.findById(req.params.id, (err, foundWorkout) => {
   if (err){
   console.log(err)//see terminal
   res.send(err);//see browser
   }else{
-    console.log(createdWorkout)
+    console.log(foundWorkout)
 
   }
     res.render("workout/edit.ejs", {
-      workout: createdWorkout,
       workout: foundWorkout
     });
   });
 });
-});
+
 
 //Show Route--detailed page
 router.get("/:id", (req, res) => {
@@ -95,22 +93,22 @@ router.get("/:id", (req, res) => {
 
 //Update Route
 router.put("/:id", (req, res) => {
-  Workout.create({
-                  name: req.body.name, 
-                  category: req.body.category,
-                  trainingPhase: req.body.trainingPhase, 
-                  sets: req.body.sets,
-                  reps: req.body.reps, 
-                  exercises: [Exercise.schema]
-                }, (err, updatedWorkout) => {
- 
-  
-    console.log(updatedWorkout, "this is the updatedWorkout");
-
-    res.redirect("/workout");
+  Workout.findByIdAndUpdate(req.params.id, 
+                            {name: req.body.name, 
+                            category: req.body.category,
+                            trainingPhase: req.body.trainingPhase, 
+                            sets: req.body.sets,
+                            reps: req.body.reps, 
+                            exercises: [Exercise.schema]},
+  {new: true}, (err, updatedWorkout) => {
+      if(err){
+        res.send(err);
+      }else{
+      console.log(updatedWorkout, "this is the updatedWorkout");
+      res.redirect("/workout");
+      }
   });
 });
-
 
 
 // Find & Delete workout
@@ -119,18 +117,10 @@ router.put("/:id", (req, res) => {
 router.delete("/:id", (req, res) => {
   Workout.findByIdAndRemove(req.params.id, (err, deletedWorkout) => {
     console.log(deletedWorkout, " this is deletedWorkout");
-    const exerciseId = [];
-    for(let i = 0; i < deletedUser.exercise.length; i++){
-      exerciseId.push(deletedWorkout.exercise[i].id);
-    }
-
-    Exercise.remove({
-      _id: { $in: exerciseId}
-    }, (err, data) => {
+    
       res.redirect("/workout")
     });
   });
-});
 
 module.exports = router;
 

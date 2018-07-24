@@ -8,7 +8,7 @@
 	</title>
 </head>
 <body>
-	<h1>Build and/or Edit Workout </h1>
+	<h1>Edit Workout </h1>
     <nav>
         <ul>
           <li>
@@ -16,17 +16,17 @@
           </li>
         </ul>
       </nav>
+      <h3> Currently Viewing <a href="/workout/<%workout.id%>"><%=workout.id.name%></a> </h3>
   <main>
-    <form action="/workout/<%=workout.id%>?_method=PUT" method="POST">
+    <form method="POST" action="/workout/<%=workout.id%>?_method=PUT">
       Name: <input type="text" name="name" value="<%workout.name%>" /><br/><br/>
       Category: <input type="text" name="category" value="<%workout.category%>"/><br/><br/>
       Training Phase: <input type="text" name="trainingPhase" value="<%workout.trainingPhase%>"/><br/><br/>
       Sets: <input type="text" name= "sets" value="<%workout.sets%>"/><br/><br/>
       Reps: <input type="text" name="reps" value="<%workout.reps%>"/><br/><br/>
       <!-- Exercises: <img src="images/squat.jpg"> -->
-
+      <input type="submit" value="Submit Changes"/>
     </form>
-      <a href="/workout/<%=workout.id%>/show"><button type="submit">View Workout</button></a>
     </main>   
 <footer>
   <ul>
