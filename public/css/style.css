@@ -1,6 +1,7 @@
+/**********************************/
+/*HEADERS*/
+/**********************************/
 
-
-/*Headers*/
 header {
 	margin-top: 10px;
 }
@@ -15,10 +16,11 @@ h1 {
 	font-family: 'Barlow Condensed', sans-serif;
 	font-size: 40px;
 	letter-spacing: 0;
-
 }
 
-/*Navs*/
+/**********************************/
+/*NAVS*/
+/**********************************/
 .navbar-expand-lg, .bg-light {
 	background-color: rgb(255, 255, 255, 0.8) !important;
 }
@@ -28,7 +30,9 @@ h1 {
 	margin-right: 10px;
 }
 
-/*Registration & Login*/
+/**********************************/
+/*REGISTRATION & LOGIN*/
+/**********************************/
 .regLog {
 	text-align: center;
 	display: inline-block;
@@ -69,7 +73,9 @@ h4 {
 	color: white;
 	font-family: 'Barlow Condensed', sans-serif;
 }
-/*Body*/
+/**********************************/
+/*BODY*/
+/**********************************/
 .container {
 	background-image: url('/images/login-background.png');
 	background-repeat: no-repeat;
@@ -80,7 +86,27 @@ h4 {
 .workouts {
 	text-align: left;
 }
-/*Footer*/
+
+.details {
+	text-align: left;
+	font-size: 30px;
+	text-transform: uppercase;
+	text-decoration: underline;
+}
+.lowerDetails {
+
+}
+form {
+	font-family: 'Barlow Condensed', sans-serif;
+	text-align: left;
+	font-size: 20px;
+	text-transform: uppercase;
+	color: white;
+}
+
+/**********************************/
+/*FOOTER*/
+/**********************************/
 footer {
 	color: white;
 	text-align: center;
