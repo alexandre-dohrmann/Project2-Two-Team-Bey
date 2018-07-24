@@ -10,6 +10,23 @@ router.get("/", (req, res) => {
       res.render("exercise/index.ejs", {
         exercise: foundExercise
       });
+//this is the array of exercises that lives on the index page
+//on click i need to take an exercise--without changing the array-- and add it to a new array that lives inside a workout(arrayOfExercisesInWorkout)
+//this is a start....
+    //   const variableForExerciseData = {arrayOfExerciseObjects: [
+    //                                                                                               {name: "squat"},
+    //                                                                                               {name: "lunge"},
+    //                                                                                               {name: "push up"},
+    //                                                                                               {name: "pull up"},
+    //                                                                                               {name: "jefferson curl"},
+    //                                                                                               {name: "german arm swing"},
+    //                                                                                               {name: "plank"}
+    //                                                                                             ]
+    // }
+    // for (i = 0; i < variableForExerciseData.arrayOfExerciseObjects.length; i++){
+    //   const oneExercise = variableForExerciseData.arrayOfExerciseObjects[i];
+    //   $("<li> name" + oneExercise.name + "</li>".appendTo("ul")
+    // }
   });
 });
 
