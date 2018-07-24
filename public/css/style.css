@@ -13,9 +13,9 @@ h1 {
     letter-spacing: -8px;
 }
 .subtitle {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 40px;
-    letter-spacing: 0;
+	font-family: 'Barlow Condensed', sans-serif;
+	font-size: 40px;
+	letter-spacing: 0;
 }
 
 /**********************************/
@@ -88,20 +88,20 @@ h4 {
 }
 
 .details {
-    text-align: left;
-    font-size: 30px;
-    text-transform: uppercase;
-    text-decoration: underline;
+	text-align: left;
+	font-size: 30px;
+	text-transform: uppercase;
+	text-decoration: underline;
 }
 .lowerDetails {
 
 }
 form {
-    font-family: 'Barlow Condensed', sans-serif;
-    text-align: left;
-    font-size: 20px;
-    text-transform: uppercase;
-    color: white;
+	font-family: 'Barlow Condensed', sans-serif;
+	text-align: left;
+	font-size: 20px;
+	text-transform: uppercase;
+	color: white;
 }
 
 /**********************************/

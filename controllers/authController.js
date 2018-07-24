@@ -24,7 +24,7 @@ router.post('/login', (req, res) => {
         if(bcrypt.compareSync(req.body.password, user.password)){
           req.session.username = user.username;
           req.session.loggedIn = true;
-          res.redirect('/user')
+          res.redirect('/workout')
         } else {
           req.session.message = 'Username or password is incorrect';
           res.redirect('/auth')
@@ -55,7 +55,7 @@ router.post('/register', (req, res) => {
     }
     req.session.username = user.username;
     req.session.loggedIn = true; 
-    res.redirect('/user')
+    res.redirect('/workout')
     console.log(userDbEntry)
 
   });

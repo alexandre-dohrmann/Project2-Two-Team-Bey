@@ -6,24 +6,7 @@ const Exercise = require("../models/exercise.js");
 
 //Landing page route
 
-router.get('/', async (req, res)=>{
-  try  {
-    const foundUser = await User.find({});
-    const foundWorkout = await Workout.find({});
-      res.render('user/index.ejs', {
-        user: foundUser,
-        username: req.session.username,
-        workout: foundWorkout,
-      });
-  } catch (err){
-    res.send(err);
-  }
-})
 
-//NEW route
-router.get("/new", (req, res) => {
-  res.render("user/new.ejs");
-});
 
 //SHOW Route --detailed page
 router.get("/:id/show", (req, res) => {
@@ -51,32 +34,29 @@ router.put("/:id", (req, res) => {
   });
 });
 
-//Create Route
-router.post("/", (req, res) => {
-  console.log(req.body)
-  User.create(req.body, (err, createdUser) => {
-    console.log(createdUser, " this is the createdUser");
-    res.redirect("/user");
-  });
-});
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// RETURN TO THIS LATER!!!!!!!!!!
+// ++++++++++++++++++++++++++++++++++++++++++++++
+// ++++++++++++++++++++++++++++++++++++++++++++++
 
 // Find & Delete User
 //send user's deleted workouts to the deleted user's workout property
 //remove workout object from deleted user collection
-router.delete("/:id", (req, res) => {
-  User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
-    console.log(deletedUser, " this is deletedUser");
-    const workoutId = [];
-    for(let i = 0; i < deletedUser.workout.length; i++){
-      workoutId.push(deletedUser.workout[i].id);
-    }
+// router.delete("/:id", (req, res) => {
+//   User.findByIdAndRemove(req.params.id, (err, deletedUser) => {
+//     console.log(deletedUser, " this is deletedUser");
+//     const workoutId = [];
+//     for(let i = 0; i < deletedUser.workout.length; i++){
+//       workoutId.push(deletedUser.workout[i].id);
+//     }
 
-    Workout.remove({
-      _id: { $in: workoutId}
-    }, (err, data) => {
-      res.redirect("/user")
-    });
-  });
-});
+//     Workout.remove({
+//       _id: { $in: workoutId}
+//     }, (err, data) => {
+//       res.redirect("/user")
+//     });
+//   });
+// });
 
 module.exports = router;
