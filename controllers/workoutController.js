@@ -57,7 +57,14 @@ router.get("/new", (req, res) => {
 
 //Edit Route
 router.get("/:id/edit", (req, res) => {
-  Workout.create(req.body, (err, createdWorkout) => {
+  Workout.create({
+                  name: req.body.name, 
+                  category: req.body.category,
+                  trainingPhase: req.body.trainingPhase, 
+                  sets: req.body.sets,
+                  reps: req.body.reps, 
+                  exercises: [Exercise.schema]
+                }, (err, createdWorkout) => {
   
  Workout.findById(req.params.id, (err, foundWorkout) => {
   if (err){
@@ -100,7 +107,7 @@ router.put("/:id", (req, res) => {
   
     console.log(updatedWorkout, "this is the updatedWorkout");
 
-    res.redirect("/workout/show");
+    res.redirect("/workout");
   });
 });
 
