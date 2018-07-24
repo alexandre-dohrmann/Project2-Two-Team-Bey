@@ -8,22 +8,19 @@ const Workout = require("../models/workout.js");
 
 
 //Landing page route
-router.get("/", (req, res) => {
-	Workout.find({}, (err, allWorkouts) => {
-    User.find({}, (err, foundUser) => {
-    if (err){
-      console.log(err);//see terminal
-      res.send(err);//see browser
-    }else{
-
-    }
-    res.render("workout/index.ejs", {//changed this
-      workout: allWorkouts,
-      users: foundUser
-    });
-  });
-});
-});
+router.get('/', async (req, res)=>{
+  try  {
+    const foundUser = await User.find({});
+    const foundWorkout = await Workout.find({});
+      res.render('workout/index.ejs', {
+        user: foundUser,
+        username: req.session.username,
+        workout: foundWorkout,
+      });
+  } catch (err){
+    res.send(err);
+  }
+})
 
 //Create Route
 router.post("/",(req, res) => {
@@ -47,20 +44,19 @@ router.post("/",(req, res) => {
 
 
 //NEW route
-router.get("/new", (req, res) => {
-  Workout.find({}, (err, allWorkouts) => {
-    
-    if (err){
-      console.log(err);//see terminal
-      res.send(err);//see browser
-    }else{
-
-    }
-    res.render("workout/new.ejs", {
-      workout: allWorkouts
-    });
-  });
-  });
+router.get('/new', async (req, res)=>{
+  try  {
+    const foundUser = await User.find({});
+    const foundWorkout = await Workout.find({});
+      res.render('workout/new.ejs', {
+        user: foundUser,
+        username: req.session.username,
+        workout: foundWorkout,
+      });
+  } catch (err){
+    res.send(err);
+  }
+})
 
 //Edit Route
 router.get("/:id/edit", (req, res) => {
@@ -81,13 +77,22 @@ router.get("/:id/edit", (req, res) => {
 
 
 //Show Route--detailed page
-router.get("/:id", (req, res) => {
-  Workout.findById(req.params.id, (err, foundWorkout) => {
-    res.render("workout/show.ejs", {
-      workout: foundWorkout
-    });
-  });
-});
+router.get('/:id/show', async (req, res)=>{
+  try  {
+    const foundUser = await User.find({});
+    const foundWorkout = await Workout.findById(req.params.id);
+    req.session.workout = foundWorkout
+      res.render('workout/show.ejs', {
+        user: foundUser,
+        username: req.session.username,
+        workout: foundWorkout,
+      });
+      console.log(foundWorkout);
+      console.log(req.params.id);
+  } catch (err){
+    res.send(err);
+  }
+})
 
 
 
