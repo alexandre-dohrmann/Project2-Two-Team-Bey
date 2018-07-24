@@ -5,22 +5,45 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 require('./db/db');
 
+// +++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++
+// BACKED SESSION STORAGE (CONNECT+EXPRESS:
+// +++++++++++++++++++++++++++++++++++++++++++
+// +++++++++++++++++++++++++++++++++++++++++++
+const MongoDBStore = require('connect-mongodb-session')(session);
+const store = new MongoDBStore({
+  uri: 'mongodb://localhost:27017/project_2_session_test',
+  collection: 'mySessions'
+});
 
-
+store.on('connected', function() {
+  store.client;
+});
+ 
+store.on('error', function(error) {
+  assert.ifError(error);
+  assert.ok(false);
+});
+ 
 app.use(session({
-  secret: 'secrets ruin lives',
-  resave: false, 
-  saveUninitialized: false 
+  secret: 'This is a secret',
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24
+  },
+  store: store,
+  resave: true,
+  saveUninitialized: true
 }));
+
 
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static('public'));
 
 
-// app.use((req, res, next) => {
-//   next()
-// });
+app.use((req, res, next) => {
+  next()
+});
 
 const authController = require('./controllers/authController');
 const exerciseController = require('./controllers/exerciseController');
