@@ -5,6 +5,8 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 require('./db/db');
 
+
+
 app.use(session({
   secret: 'secrets ruin lives',
   resave: false, 
@@ -13,6 +15,7 @@ app.use(session({
 
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: false}));
+app.use(express.static('public'));
 
 
 // app.use((req, res, next) => {

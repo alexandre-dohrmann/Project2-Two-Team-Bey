@@ -1,0 +1,93 @@
+
+
+/*Headers*/
+header {
+	margin-top: 10px;
+}
+h1 {
+	font-family: 'Montserrat Alternates', sans-serif;
+	font-size: 80px;
+	font-weight: 5px;
+	color: white;
+	letter-spacing: -8px;
+}
+.subtitle {
+	font-family: 'Barlow Condensed', sans-serif;
+	font-size: 40px;
+	letter-spacing: 0;
+
+}
+
+/*Navs*/
+.navbar-expand-lg, .bg-light {
+	background-color: rgb(255, 255, 255, 0.8) !important;
+}
+.nav-item {
+	font-size: 20px !important;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+/*Registration & Login*/
+.regLog {
+	text-align: center;
+	display: inline-block;
+	color: white;
+	font-family: 'Barlow Condensed', sans-serif;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.homeInput {
+	text-align: right;
+	font-size: 20px;
+	color: lightgreen;
+}
+
+.reg, .inputLogin {
+	display: inline-block;
+}
+
+.logs {
+	display: inline-block;
+	border-radius: 8px;
+	background-color: lightgreen !important;
+}
+
+.inputs {
+	margin-top: 10px;
+	text-align: center;
+}
+.failure {
+	text-align: center;
+	color: lightgreen;
+	font-family: 'Barlow Condensed', sans-serif;
+}
+
+h4 {
+	text-align: center;
+	color: white;
+	font-family: 'Barlow Condensed', sans-serif;
+}
+/*Body*/
+.container {
+	background-image: url('/images/login-background.png');
+	background-repeat: no-repeat;
+  	background-size: cover;
+  	background-attachment: fixed;
+  	background-position: center center;
+}
+.workouts {
+	text-align: left;
+}
+/*Footer*/
+footer {
+	color: white;
+	text-align: center;
+}
+.nav-item {
+	font-family: 'Barlow Condensed', sans-serif;
+	list-style-type: none;
+	font-size: 12px;
+
+}
