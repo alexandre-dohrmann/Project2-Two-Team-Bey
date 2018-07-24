@@ -1,13 +1,14 @@
 const mongoose = require("mongoose");
 const Exercise = require("./exercise");
+const User = require("./users");
 
 const workoutSchema = new mongoose.Schema({
-  catagory: String, //Bro Split - Upper, Bro Split - Lower, Full Body, Mobility, Core
-  trainingPhase: String, //deload, stabilization endurance, strength endurance, hypertrophy, maximal strength, power
-  sets: Number,
-  reps: Number,
-  weight: Number,
-  exercises: [Exercise.schema]
+	name: String,	
+  	category: String, //Upper, Lower, Push, Pull, Full Body, Mobility, Core
+  	trainingPhase: String, //deload, stabilization endurance, strength endurance, hypertrophy, maximal strength, power
+  	sets: Number,
+  	reps: Number,	
+  	exercises: [Exercise.schema],
 
 });
 
