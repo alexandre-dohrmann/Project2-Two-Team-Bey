@@ -100,6 +100,14 @@ h4 {
 	display: inline-block;
 	text-transform: uppercase;
 }
+.lowerDetails2 {
+    text-align: left;
+    font-size: 25px;
+    margin: 0;
+    display: inline-block;
+    text-transform: uppercase;
+    color: lightgreen;
+}
 
 .inputs2 {
 	text-align: right;
@@ -116,7 +124,7 @@ form {
 	color: white;
 }
 
-.delete {
+.delete, .edit, .add {
 	display: inline-block;
 	font-family: 'Barlow Condensed', sans-serif;
 	font-size: 20px;
