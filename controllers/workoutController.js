@@ -87,8 +87,6 @@ router.get('/:id/show', async (req, res)=>{
         username: req.session.username,
         workout: foundWorkout,
       });
-      console.log(foundWorkout);
-      console.log(req.params.id);
   } catch (err){
     res.send(err);
   }

@@ -9,13 +9,22 @@ const Exercise = require("../models/exercise.js");
 
 
 //SHOW Route --detailed page
-router.get("/:id/show", (req, res) => {
-  User.findById(req.params.id, (err, foundUser) => {
-    res.render("user/show.ejs", {
-      user: foundUser
-    });
-  });
-});
+
+router.get('/profile', async (req, res)=>{
+  console.log("Im here");
+  try  {
+    const foundUser = await User.findOne({'username': req.session.username});
+    req.session.user = foundUser;
+    console.log(foundUser);
+      res.render('user/show.ejs', {
+        user: foundUser,
+        username: req.session.username,
+      });
+  } catch (err){
+    res.send(err);
+  }
+})
+
 
 //Edit Route
 router.get("/:id/edit", (req, res) => {
