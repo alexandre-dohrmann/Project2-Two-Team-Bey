@@ -30,7 +30,7 @@ router.post("/",(req, res) => {
                   trainingPhase: req.body.trainingPhase, 
                   sets: req.body.sets,
                   reps: req.body.reps, 
-                  exercises: [Exercise.schema]
+                  exercises: [req.body.exercises]
                 }, (err, createdWorkout) => {
                   if (err){
                     console.log(err)
@@ -41,7 +41,6 @@ router.post("/",(req, res) => {
                 }
 });
 });  
-
 
 //NEW route
 router.get('/new', async (req, res)=>{

@@ -8,6 +8,7 @@ const ExerciseData = require("../models/ExerciseData.js");
 //landing page
 router.get("/", async (req, res) => {
   try {
+    console.log("Im here");
     const foundExercise = await Exercise.find({});
       res.render("exercise/index.ejs", {
         exercise: foundExercise

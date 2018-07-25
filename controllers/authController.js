@@ -46,8 +46,11 @@ router.post('/register', (req, res) => {
 
   // Made a Database entry object to enter into User Model.
   const userDbEntry = {};
+  userDbEntry.name = req.body.name;
   userDbEntry.username = req.body.username;
   userDbEntry.password = passwordHash;
+  userDbEntry.email = req.body.email;
+
   //Creating entry into the Database.
   User.create(userDbEntry, (err, user) => {
     if (err) {

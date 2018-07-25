@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-// const Exercise = require("../models/exercise.js");
-// const ExerciseData = require("../models/ExerciseData.js");
+const Exercise = require("../models/exercise.js");
+const ExerciseData = require("../models/ExerciseData.js");
 
 // create our db and connect
 mongoose.connect('mongodb://localhost/project2');
