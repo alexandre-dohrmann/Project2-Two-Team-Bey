@@ -9,7 +9,7 @@ const ExerciseData = require("../models/ExerciseData.js");
 router.get("/", async (req, res) => {
   try {
     console.log("Im here");
-    const foundExercise = await Exercise.find({});
+    const foundExercise = await Exercise.find({});//use_id when referring to the workout stored in session
       res.render("exercise/index.ejs", {
         exercise: foundExercise
         });
