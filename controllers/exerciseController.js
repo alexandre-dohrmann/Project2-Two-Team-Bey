@@ -17,6 +17,42 @@ router.get("/", async (req, res) => {
   }
 })
 
+//route to workout details page
+router.get("/:id/add-to-workout", async (req, res)=>{
+  try  {
+    const foundWorkout = await Workout.findById(req.params.id);
+    const exerciseFromDB = await Exercise.findById(req.params.id);
+    const foundUser = await User.find({});
+    req.session.workout = foundWorkout
+      res.render("workout/show.ejs", {
+            workout: foundWorkout,
+            exercise: exerciseFromDB,
+            user: foundUser,
+            username: req.session.username,
+            workout: foundWorkout
+          });
+  } catch (err) {
+      res.send(err);
+  }
+});
+
+router.post("/:id/add-to-workout", async (req, res) => {
+  try {
+    const exerciseFromDB = await Exercise.findById(req.params.id);
+    const currentWorkout = await Workout.findById(req.session.currentWorkout);
+    const [foundExercise, foundWorkout] = await Promise.all([exerciseFromDB, currentWorkout]);
+    console.log(foundExercise, foundWorkout + "this is workout");
+    foundWorkout.exercise.push(foundExercise);
+
+    await foundWorkout.save();
+    res.redirect("/exercise");
+
+  } catch (err){
+    console.log(err)
+    res.send(err);
+  }
+})
+
 //show route --detailed page
 router.get("/:id", async (req, res) => {
   try{
@@ -51,8 +87,7 @@ router.get("/:id", async (req, res) => {
 // });
 
 //new route
-// router.get("/new", (req, res) => {
-//   res.render("exercise/new.ejs");
+// 
  
 // });
 
