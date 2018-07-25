@@ -23,10 +23,22 @@
   </header>
   <main>
     <h4 class="details"><%=workout.name%> - Details:</h4></br>
-    <h4 class="lowerDetails">Category: <%=workout.category%></h4><br/>
-    <h4 class="lowerDetails">Training Phase: <%=workout.trainingPhase%></h4><br/>
-    <h4 class="lowerDetails">Sets: <%=workout.sets%></h4><br/>
-    <h4 class="lowerDetails">Reps: <%=workout.reps%></h4><br/>
+    <div class="workouts-block">
+      <h4 class="lowerDetails">Category: </h4>
+        <h4 class="inputs2"><%=workout.category%></h4>
+    </div>
+    <div class="workouts-block">
+      <h4 class="lowerDetails">Training Phase: </h4>
+        <h4 class="inputs2"><%=workout.trainingPhase%></h4>
+    </div>
+    <div class="workouts-block">
+      <h4 class="lowerDetails">Sets: </h4>
+        <h4 class="inputs2"><%=workout.sets%></h4>
+    </div>  
+    <div class="workouts-block">
+      <h4 class="lowerDetails">Reps: </h4>
+        <h4 class="inputs2"><%=workout.reps%></h4>
+    </div>
   </main>
   <footer>
     <ul>

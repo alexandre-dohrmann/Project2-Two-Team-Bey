@@ -9,28 +9,28 @@
 <body class="container">
   <header></br>
     <h1 class="nav justify-content-center title">Trainer.</h1></br>
-    <h1 class="nav justify-content-center subtitle"><%=username%>'s Profile & Workouts Page</h1></br>
+    <h1 class="nav justify-content-center subtitle"><%=username%>'s Workouts Page</h1></br>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="/users">Profile <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="/user/profile">Profile <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link" href="/workout/new">Add A Workout</a>
         </div>
       </div>
     </nav></br>
   </header>
   <main>
-      <h4 class="workouts"><%=username%>'s List of Workouts:</h4></br>
+      <h4 class="details"><%=username%>'s List of Client-Workouts:</h4></br>
       <ul>
         <% for(let i = 0; i < workout.length; i++){ %>
-          <li>
-            <a href="/workout/<%=workout[i]._id%>/show"><%=workout[i].name%></a>
-            <a href="/workout/<%=workout[i].name%>/edit"><button type="submit">Edit</button></a>
-            <form method="POST" action="/workout/<%=workout[i]._id%>?_method=DELETE">
-             <button type="submit">DELETE</button>
+          <li class="client-workouts">
+            <a class="delete" href="/workout/<%=workout[i]._id%>/show"><%=workout[i].name%></a>
+            <a class="delete" href="/workout/<%=workout[i].name%>/edit"><button class="workout-buttons" type="submit">Edit</button></a>
+            <form class="delete" method="POST" action="/workout/<%=workout[i]._id%>?_method=DELETE">
+             <button class="workout-buttons" type="submit">DELETE</button></form>
           </li>
         <% } %>
       </ul>
