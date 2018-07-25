@@ -5,78 +5,94 @@ const Workout = require("../models/workout.js");
 const Exercise = require("../models/exercise.js")
 
 //landing page
-router.get("/", (req, res) => {
-  Exercise.find({}, (err, foundExercise) => {
+router.get("/", async (req, res) => {
+  try {
+    const foundExercise = await Exercise.find({});
       res.render("exercise/index.ejs", {
         exercise: foundExercise
-      });
-//this is the array of exercises that lives on the index page
-//on click i need to take an exercise--without changing the array-- and add it to a new array that lives inside a workout(arrayOfExercisesInWorkout)
-//this is a start....
-    //   const variableForExerciseData = {arrayOfExerciseObjects: [
-    //                                                                                               {name: "squat"},
-    //                                                                                               {name: "lunge"},
-    //                                                                                               {name: "push up"},
-    //                                                                                               {name: "pull up"},
-    //                                                                                               {name: "jefferson curl"},
-    //                                                                                               {name: "german arm swing"},
-    //                                                                                               {name: "plank"}
-    //                                                                                             ]
-    // }
-    // for (i = 0; i < variableForExerciseData.arrayOfExerciseObjects.length; i++){
-    //   const oneExercise = variableForExerciseData.arrayOfExerciseObjects[i];
-    //   $("<li> name" + oneExercise.name + "</li>".appendTo("ul")
-    // }
-  });
+        });
+  } catch (err){
+    res.send(err);
+  }
+})
+
+//Create Route
+router.post("/", async (req, res, next) => {
+  try {
+  const createdExercise = await Exercise.create({
+                                                  name: req.body.name
+                                                });
+  console.log(createdExercise, " this is the createdExercise");
+
+  res.redirect("/exercise");
+
+  } catch (err){
+    console.log(err);
+    res.send(err);
+    next(err);
+}
 });
 
 //new route
 router.get("/new", (req, res) => {
   res.render("exercise/new.ejs");
-});
-
-//show route --detailed page
-router.get("/:id", (req, res) => {
-  Exercise.findById(req.params.id, (err, foundExercise) => {
-    res.render("exercise/show.ejs", {
-     exercise: foundExercise
-    });
-  });
+ 
 });
 
 //Edit Route
-router.get("/:id/edit", (req, res) => {
-  Exercise.findById(req.params.id, (err, foundExercise) => {
+router.get("/:id/edit", async (req, res) => {
+  try{
+    const foundExercise = await Exercise.findById(req.params.id);
+    console.log(foundExercise);
     res.render("exercise/edit.ejs", {
      exercise: foundExercise
-    });
-  });
+   });
+   } catch (err){
+      res.send(err);
+   }
 });
+ 
+
+//show route --detailed page
+router.get("/:id", async (req, res) => {
+  try{
+    const foundExercise = await Exercise.findById(req.params.id);
+    res.render("exercise/show.ejs", {
+     exercise: foundExercise
+    });
+  } catch(err){
+    res.send(err);
+  }
+});
+
+
 
 //Update Route
-router.put("/:id", (req, res) => {
-  Exercise.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedExercise)=> {
+router.put("/:id", async (req, res, next) => {
+  try{
+    const updatedExercise = await Exercise.findByIdAndUpdate(req.params.id, req.body, {new: true});
     console.log(updatedExercise, " this is the updatedExercise");
     res.redirect("/exercise");
-  });
+
+  } catch(err) {
+    res.send(err);
+    next(err);
+  }
 });
 
-//Create Route
-router.post("/", (req, res) => {
-  console.log(req.body)
-  Exercise.create(req.body, (err, createdExercise) => {
-    console.log(createdExercise, " this is the createdExercise");
-    res.redirect("/exercise");
-  });
-
-});
 
 // Delete Route
-router.delete("/:id", (req, res) => {
-  Exercise.findByIdAndRemove(req.params.id, (err, deletedExercise) => {
+router.delete("/:id", async (req, res) => {
+
+  try{
+    const deletedExercise = await Exercise.findByIdAndRemove(req.params.id);
     console.log(deletedExercise, " this is the deletedExercise");
       res.redirect("/exercise")
-    });
-  });
+
+  } catch (err) {
+    console.log (err)
+    res.send(err);
+  }
+});
 
 module.exports = router;
