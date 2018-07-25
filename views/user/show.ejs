@@ -17,12 +17,37 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="/workout">Home<span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="/user/<%=user._id%>">Edit Profile<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link" href="/user/profile/edit">Edit Your Profile</a>
         </div>
       </div>
     </nav></br>
   </header>
-
+  <main>
+    <h4 class="details"><%=username%>'s - Details:</h4></br>
+    <div class="workouts-block">
+      <h4 class="lowerDetails">Name: </h4>
+        <h4 class="inputs2"><%=user.name%></h4>
+    </div>
+    <div class="workouts-block">
+      <h4 class="lowerDetails">Username: </h4>
+        <h4 class="inputs2"><%=user.username%></h4>
+    </div>    
+    <div class="workouts-block">
+      <h4 class="lowerDetails">Password: </h4>
+        <h4 class="inputs2">**********</h4>
+    </div>  
+    <div class="workouts-block">
+      <h4 class="lowerDetails">Email: </h4>
+        <h4 class="inputs2"><%=user.email%></h4>
+    </div>
+    <div class="workouts-block">
+      <h4 class="lowerDetails">Phone Number: </h4>
+        <h4 class="inputs2"><%=user.phoneNumber%></h4>
+    </div>  
+  </main></br>
+    <form class="add" method="POST" action="/exercise">
+      <button class="workout-buttons" type="submit">Add Exercise</button>
+    </form>
   <footer>
     <ul>
       <li class="nav-item">
@@ -35,7 +60,3 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
-
-  
-
-

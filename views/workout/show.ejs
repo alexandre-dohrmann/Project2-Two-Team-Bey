@@ -4,7 +4,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
   <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Montserrat+Alternates" rel="stylesheet">
-<title>Trainer. - User Profile</title>
+<title>Trainer. - Workout Show Page</title>
 </head>
 <body class="container">
   <header></br>
@@ -42,16 +42,16 @@
     <div class="workouts-block">
       <h4 class="lowerDetails2">Exercises: </h4>
         <% for(let i = 0; i < workout.exercises.length; i++){ %>
-          <h4 class="inputs2"><%=workout.exercises[i].name%></br>
-            <a class="delete" href="/workout/<%=workout.exercises[i]._id%>/show"><%=workout.exercises[i].name%></a>
-            <a class="edit" href="/workout/<%=workout.exercises[i].name%>/edit"><button class="workout-buttons" type="submit">Edit</button></a>
-            <form class="delete" method="POST" action="/workout/<%=workout.exercises[i]._id%>?_method=DELETE">
+          <h4 class="inputs2"><%=workout[i].name%></br>
+            <a class="delete" href="/workout/<%=workout._id%>/show"><%=workout[i].name%></a>
+            <a class="edit" href="/workout/<%=workout[i].name%>/edit"><button class="workout-buttons" type="submit">Edit</button></a>
+            <form class="delete" method="POST" action="/workout/<%=workout[i]._id%>?_method=DELETE">
              <button class="workout-buttons" type="submit">DELETE</button></form>
           </h4>
         <% } %>
     </div>
   </main></br>
-    <form class="add" method="POST" action="/exercise">
+    <form class="add" action="/exercise" method="POST">
       <button class="workout-buttons" type="submit">Add Exercise</button>
     </form>
   <footer>

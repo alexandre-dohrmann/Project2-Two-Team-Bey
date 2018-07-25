@@ -11,11 +11,9 @@ const Exercise = require("../models/exercise.js");
 //SHOW Route --detailed page
 
 router.get('/profile', async (req, res)=>{
-  console.log("Im here");
   try  {
     const foundUser = await User.findOne({'username': req.session.username});
     req.session.user = foundUser;
-    console.log(foundUser);
       res.render('user/show.ejs', {
         user: foundUser,
         username: req.session.username,
@@ -27,16 +25,22 @@ router.get('/profile', async (req, res)=>{
 
 
 //Edit Route
-router.get("/:id/edit", (req, res) => {
-  User.findById(req.params.id, (err, foundUser) => {
-    res.render("user/edit.ejs", {
-      user: foundUser
-    });
-  });
+router.get('/profile/edit', async (req, res) => {
+  try {
+    const foundUser = await User.findOne({'username': req.session.username});
+    req.session.user = foundUser;
+      res.render('user/edit.ejs', {
+        user: foundUser,
+        username: req.session.username,
+      });
+  } catch (err) {
+      res.send(err)
+    }
 });
 
+
 //Update Route
-router.put("/:id", (req, res) => {
+router.put("/profile", (req, res) => {
   User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser)=> {
     console.log(updatedUser, "this is the updatedUser");
     res.redirect("/user");
