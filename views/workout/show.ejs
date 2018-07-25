@@ -39,7 +39,21 @@
       <h4 class="lowerDetails">Reps: </h4>
         <h4 class="inputs2"><%=workout.reps%></h4>
     </div>
-  </main>
+    <div class="workouts-block">
+      <h4 class="lowerDetails2">Exercises: </h4>
+        <% for(let i = 0; i < workout.exercises.length; i++){ %>
+          <h4 class="inputs2"><%=workout.exercises[i].name%></br>
+            <a class="delete" href="/workout/<%=workout.exercises[i]._id%>/show"><%=workout.exercises[i].name%></a>
+            <a class="edit" href="/workout/<%=workout.exercises[i].name%>/edit"><button class="workout-buttons" type="submit">Edit</button></a>
+            <form class="delete" method="POST" action="/workout/<%=workout.exercises[i]._id%>?_method=DELETE">
+             <button class="workout-buttons" type="submit">DELETE</button></form>
+          </h4>
+        <% } %>
+    </div>
+  </main></br>
+    <form class="add" method="POST" action="/exercise">
+      <button class="workout-buttons" type="submit">Add Exercise</button>
+    </form>
   <footer>
     <ul>
       <li class="nav-item">
