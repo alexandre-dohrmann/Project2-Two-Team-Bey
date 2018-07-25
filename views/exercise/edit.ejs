@@ -7,6 +7,12 @@
 </head>
 <body>
 	<h1>This is the Edit an Exercise Page</h1>
+	<main>
+    <form method="POST" action="/exercise/<%=exercise._id%>?_method=PUT">
+      Name: <input type="text" name="name" value="<%exercise.name%>" /><br/><br/>
+      <input type="submit" value="Submit Changes"/>
+    </form>
+    </main>   
 
 </body>
 </html>

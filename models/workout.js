@@ -9,7 +9,7 @@ const workoutSchema = new mongoose.Schema({
   	trainingPhase: String, //deload, stabilization endurance, strength endurance, hypertrophy, maximal strength, power
   	sets: Number,
   	reps: Number,	
-  	exercises: [mongoose.Schema.Types.ObjectId],
+  	exercises: [{type: mongoose.Schema.Types.ObjectId, ref: "Workout"}]
 
 });
 
