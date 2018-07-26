@@ -15,13 +15,15 @@
 			<% for(let i = 0; i < exercise.length; i++){ %>
             <li>
 			<a href="/exercise/<%=exercise[i].id%>"><%=exercise[i].name%></a>
-			<form action="/exercise/<%= exercise.id%>/add-to-workout" method="POST">
+			<!-- below is the route the exercise takes to get to workout/show.ejs -->
+			<form method="POST" action="/exercise/<%= exercise[i].id%>/add-to-workout" >
 			<input type="submit" value="Add To Workout"/>
 			</form>
             </li><br/>
             <% } %>
         </ul>
-
+        <!-- i added the line below to have the ability to go back to the show page and it is not working -->
+        
 	</main>
 
 </body>

@@ -9,7 +9,8 @@ const workoutSchema = new mongoose.Schema({
   	sets: Number,
   	reps: Number,	
   	trainingPhase: String, 
-  	exercises: [String]//I changed this 7/25 @ 6pm
+  	exercises: [{type: Exercise.schema,
+  				default: undefined}]
 
 });
 

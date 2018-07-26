@@ -20,16 +20,16 @@ router.get("/", async (req, res) => {
 //route to workout details page
 router.get("/:id/add-to-workout", async (req, res)=>{
   try  {
-    const foundWorkout = await Workout.findById(req.params.id);
+    // const foundWorkout = await Workout.findById(req.params.id);
     const exerciseFromDB = await Exercise.findById(req.params.id);
-    const foundUser = await User.find({});
+    // const foundUser = await User.find({});
     req.session.workout = foundWorkout
+    console.log (exerciseFromDB);
       res.render("workout/show.ejs", {
             workout: foundWorkout,
             exercise: exerciseFromDB,
-            user: foundUser,
-            username: req.session.username,
-            workout: foundWorkout
+            // user: foundUser,
+            // username: req.session.username,
           });
   } catch (err) {
       res.send(err);
@@ -39,11 +39,12 @@ router.get("/:id/add-to-workout", async (req, res)=>{
 router.post("/:id/add-to-workout", async (req, res) => {
   try {
     const exerciseFromDB = await Exercise.findById(req.params.id);
-    const currentWorkout = await Workout.findById(req.session.currentWorkout);
+    const currentWorkout = await Workout.findById(req.session.currentWorkout._id);
     const [foundExercise, foundWorkout] = await Promise.all([exerciseFromDB, currentWorkout]);
-    console.log(foundExercise, foundWorkout + "this is workout");
-    foundWorkout.exercise.push(foundExercise);
-    console.log(exercise);
+    console.log(foundExercise + "this should be the exercise I just clicked on"); 
+    console.log(foundWorkout + "this should be the workout that just came from the workout[i]_.id/show.ejs");
+    foundWorkout.exercises.push(foundExercise);
+    console.log(foundWorkout.exercises + "this should be showing me an array of exercises with the exercise I just added");
 
     await foundWorkout.save();
     res.redirect("/exercise");
