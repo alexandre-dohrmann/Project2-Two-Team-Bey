@@ -44,7 +44,7 @@
       <h4 class="lowerDetails2">Exercises: </h4>
 
         <% for(let i = 0; i < workout.exercises.length; i++){ %>
-            <a class="delete" href="/workout/<%=workout._id%>/show"><%=workout.exercises[i]%></a> 
+            <a class="delete" href="/workout/<%=workout._id%>/show"><%=workout.exercises[i].name%></a> 
           </h4>
         <% } %>
   </main>
