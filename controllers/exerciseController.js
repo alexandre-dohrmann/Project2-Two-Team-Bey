@@ -107,10 +107,10 @@ router.get("/:id", async (req, res) => {
 // });
 
 
-//Update Route
+//Update Route ****ERICA IS WORKING HERE RIGHT NOW 7/26 4:30PM
 // router.put("/:id", async (req, res, next) => {
 //   try{
-//     const updatedExercise = await Exercise.findByIdAndUpdate(req.params.id, req.body, {new: true});
+//     const currentWorkout = await Workout.findByIdAndUpdate(req.session.currentWorkout_id, req.body, {new: true});
 //     console.log(updatedExercise, " this is the updatedExercise");
 //     res.redirect("/exercise");
 
