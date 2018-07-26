@@ -22,12 +22,13 @@
       </nav></br>
     </header>
   <main>
-      <form action="/workout/<%=workout._id%>/show" method="POST">
+      <form method="POST" action="/workout/<%=workout.id%>?_method=PUT">
         Name: <input type="text" name="name" value="<%workout.name%>" /><br/><br/>
         Category: <input type="text" name="category" value="<%workout.category%>"/><br/><br/>
         Training Phase: <input type="text" name="trainingPhase" value="<%workout.trainingPhase%>"/><br/><br/>
         Sets: <input type="text" name= "sets" value="<%workout.sets%>"/><br/><br/>
         Reps: <input type="text" name="reps" value="<%workout.reps%>"/><br/><br/>
+        Exercises: <input type="text" name="exercises" value="<%workout.exercises%>"/><br/><br/>
         <input type="submit" value="Create Workout"/><br/>   
       </form>
     </main></br>
