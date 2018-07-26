@@ -30,13 +30,14 @@ router.post("/",(req, res) => {
                   trainingPhase: req.body.trainingPhase, 
                   sets: req.body.sets,
                   reps: req.body.reps, 
-                  exercises: [Exercise.schema]//i just changed this
+                  exercises: []//i just changed this 7/25 6pm
                 }, (err, createdWorkout) => {
                   if (err){
                     console.log(err)
                     res.send(err)
                 }else{
                   console.log(createdWorkout)
+                  req.session.currentWorkout = createdWorkout
                   res.redirect("/workout");
                 }
 });
@@ -81,8 +82,8 @@ router.get('/:id/show', async (req, res)=>{
     const foundUser = await User.find({});
     const foundWorkout = await Workout.findById(req.params.id);
     req.session.workout = foundWorkout
-      console.log(foundWorkout + "this is foundWorkout")
-      console.log(req.params.id + "this is req.params")
+      console.log(foundWorkout + "this is foundWorkout")//this happens
+      console.log(req.params.id + "this is req.params")//this happens
       res.render('workout/show.ejs', {
         user: foundUser,
         username: req.session.username,
@@ -94,8 +95,6 @@ router.get('/:id/show', async (req, res)=>{
   }
 })
 
-
-
 //Update Route
 router.put("/:id", (req, res) => {
   Workout.findByIdAndUpdate(req.params.id, 
@@ -104,7 +103,7 @@ router.put("/:id", (req, res) => {
                             trainingPhase: req.body.trainingPhase, 
                             sets: req.body.sets,
                             reps: req.body.reps, 
-                            exercises: [Exercise.schema]},//THIS IS A KEY/VALUE PAIR OF OBJECTID AND EXERCISES IN MODEL
+                            exercises: []},
   {new: true}, (err, updatedWorkout) => {
       if(err){
         res.send(err);
