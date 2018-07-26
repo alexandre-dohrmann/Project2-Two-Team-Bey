@@ -17,6 +17,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="/workout">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="/workout/<%=workout._id%>/edit">Edit Workout<span class="sr-only">(current)</span></a>
         </div>
       </div>
     </nav></br>
@@ -53,8 +54,10 @@
           </h4>
         <% } %>
         <!-- the add exercise button routes correctly to exercise/index.ejs @ 8am 7/26 -->
-         <a href="/exercise" class="workout-buttons" type="submit">Add Exercise</a>
-  </main></br>
+         
+  </main>
+</br></br>
+<a class="add2" href="/exercise"><button class="workout-buttons2" type="submit">Add Exercise</button></a>
     
     
   <footer>
