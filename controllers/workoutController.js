@@ -30,7 +30,7 @@ router.post("/",(req, res) => {
                   trainingPhase: req.body.trainingPhase, 
                   sets: req.body.sets,
                   reps: req.body.reps, 
-                  exercises: [req.body.exercises]
+                  exercises: [Exercise.schema]//i just changed this
                 }, (err, createdWorkout) => {
                   if (err){
                     console.log(err)
@@ -81,10 +81,13 @@ router.get('/:id/show', async (req, res)=>{
     const foundUser = await User.find({});
     const foundWorkout = await Workout.findById(req.params.id);
     req.session.workout = foundWorkout
+      console.log(foundWorkout + "this is foundWorkout")
+      console.log(req.params.id + "this is req.params")
       res.render('workout/show.ejs', {
         user: foundUser,
         username: req.session.username,
         workout: foundWorkout,
+        //DO WE NEED TO HAVE EXERCISE REPRESENTED HERE TO HAVE THE EXERCISES POPULATE?
       });
   } catch (err){
     res.send(err);
@@ -101,7 +104,7 @@ router.put("/:id", (req, res) => {
                             trainingPhase: req.body.trainingPhase, 
                             sets: req.body.sets,
                             reps: req.body.reps, 
-                            exercises: [Exercise.schema]},
+                            exercises: [Exercise.schema]},//THIS IS A KEY/VALUE PAIR OF OBJECTID AND EXERCISES IN MODEL
   {new: true}, (err, updatedWorkout) => {
       if(err){
         res.send(err);
