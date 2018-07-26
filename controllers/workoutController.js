@@ -30,7 +30,7 @@ router.post("/",(req, res) => {
                   trainingPhase: req.body.trainingPhase, 
                   sets: req.body.sets,
                   reps: req.body.reps, 
-                  exercises: [Exercise.schema]//i just changed this
+                  exercises: [req.body.exercises]//i just changed this 7/25 6pm
                 }, (err, createdWorkout) => {
                   if (err){
                     console.log(err)
@@ -81,7 +81,7 @@ router.get('/:id/show', async (req, res)=>{
     const foundUser = await User.find({});
     const foundWorkout = await Workout.findById(req.params.id);
     req.session.workout = foundWorkout
-      console.log(foundWorkout + "this is foundWorkout")
+      console.log(foundWorkout + "this is foundWorkout")//these are both
       console.log(req.params.id + "this is req.params")
       res.render('workout/show.ejs', {
         user: foundUser,
@@ -104,7 +104,7 @@ router.put("/:id", (req, res) => {
                             trainingPhase: req.body.trainingPhase, 
                             sets: req.body.sets,
                             reps: req.body.reps, 
-                            exercises: [Exercise.schema]},//THIS IS A KEY/VALUE PAIR OF OBJECTID AND EXERCISES IN MODEL
+                            exercises: [req.body.exercises]},
   {new: true}, (err, updatedWorkout) => {
       if(err){
         res.send(err);

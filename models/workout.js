@@ -5,11 +5,11 @@ const User = require("./users");
 
 const workoutSchema = new mongoose.Schema({
 	name: String,	
-  	category: String, //Upper, Lower, Push, Pull, Full Body, Mobility, Core
-  	trainingPhase: String, //deload, stabilization endurance, strength endurance, hypertrophy, maximal strength, power
+  	category: String,
   	sets: Number,
   	reps: Number,	
-  	exercises: [{type: mongoose.Schema.Types.ObjectId, ref: "Exercise"}]
+  	trainingPhase: String, 
+  	exercises: [String]//I changed this 7/25 @ 6pm
 
 });
 

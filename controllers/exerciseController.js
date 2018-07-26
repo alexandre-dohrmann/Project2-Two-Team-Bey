@@ -8,7 +8,6 @@ const ExerciseData = require("../models/ExerciseData.js");
 //landing page
 router.get("/", async (req, res) => {
   try {
-    console.log("Im here");
     const foundExercise = await Exercise.find({});//use_id when referring to the workout stored in session
       res.render("exercise/index.ejs", {
         exercise: foundExercise
@@ -44,6 +43,7 @@ router.post("/:id/add-to-workout", async (req, res) => {
     const [foundExercise, foundWorkout] = await Promise.all([exerciseFromDB, currentWorkout]);
     console.log(foundExercise, foundWorkout + "this is workout");
     foundWorkout.exercise.push(foundExercise);
+    console.log(exercise);
 
     await foundWorkout.save();
     res.redirect("/exercise");
