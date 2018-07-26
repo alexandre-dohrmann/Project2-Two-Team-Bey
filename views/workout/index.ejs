@@ -17,13 +17,13 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="/user/profile">Profile <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="/workout/new">Add A Workout</a>
+          <a class="nav-item nav-link active" href="/workout/new">Add A Workout</a>
         </div>
       </div>
     </nav></br>
   </header>
   <main>
-      <h4 class="details"><%=username%>'s List of Client-Workouts:</h4></br>
+      <h4 class="details">Client-Workouts:</h4></br>
       <ul>
         <% for(let i = 0; i < workout.length; i++){ %>
           <li class="client-workouts">
@@ -33,11 +33,11 @@
           </li>
         <% } %>
       </ul>
-    </main>
+    </main></br></br>
   <footer>
     <ul>
       <li class="nav-item">
-          <a class="nav-link active copyright">Copyright 2018</a>
+          <a class="nav-link active copyright">© 2018 Trainer.</a>
         </li>
     </ul></br>
   </footer>
