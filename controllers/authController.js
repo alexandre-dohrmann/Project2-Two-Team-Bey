@@ -19,10 +19,11 @@ router.get('/', (req, res) => {
 // =============================================================
 
 router.post('/login', (req, res) => {
-  User.findOne({username: req.body.username}, (err, user) => {
+  User.findOne({username: req.body.username}, (err, user) => { //2nd parameter "user" is the user from DB
     if(user){
         if(bcrypt.compareSync(req.body.password, user.password)){
           req.session.username = user.username;
+          req.session.userId = user.id //the argument before the equal sign is a potato
           req.session.loggedIn = true;
           res.redirect('/workout')
         } else {
