@@ -59,21 +59,18 @@ router.get('/new', async (req, res)=>{
 })
 
 //Edit Route
-router.get("/:id/edit", (req, res) => {
-  
- Workout.findById(req.params.id, (err, foundWorkout) => {
-  if (err){
-  console.log(err)//see terminal
-  res.send(err);//see browser
-  }else{
-    console.log(foundWorkout)
-
-  }
+router.get("/:id/edit", async (req, res) => {
+  try {
+    const foundWorkout = await Workout.findById(req.params.id);
     res.render("workout/edit.ejs", {
-      workout: foundWorkout
+      workout: foundWorkout,
+      username: req.session.username
     });
-  });
+  }catch (err){
+    res.send(err);
+  }
 });
+
 
 
 //Show Route--detailed page
