@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Montserrat+Alternates" rel="stylesheet">
 <title>Trainer. - User Profile</title>
 </head>
-<body class="container">
+<body class="container background-prof">
   <header></br>
     <h1 class="nav justify-content-center title">Trainer.</h1></br>
     <h1 class="nav justify-content-center subtitle"><%=username%>'s Profile Page</h1></br>
@@ -17,7 +17,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="/workout">Home<span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="/user/profile/edit">Edit Your Profile</a>
+          <a class="nav-item nav-link active" href="/user/profile/edit">Edit Your Profile</a>
         </div>
       </div>
     </nav></br>
@@ -44,14 +44,11 @@
       <h4 class="lowerDetails">Phone Number: </h4>
         <h4 class="inputs2"><%=user.phoneNumber%></h4>
     </div>  
-  </main></br>
-    <form class="add" method="POST" action="/exercise">
-      <button class="workout-buttons" type="submit">Add Exercise</button>
-    </form>
+  </main></br></br></br>
   <footer>
     <ul>
       <li class="nav-item">
-          <a class="nav-link active copyright">Copyright 2018</a>
+          <a class="nav-link active copyright">© 2018 Trainer.</a>
         </li>
     </ul></br>
   </footer>

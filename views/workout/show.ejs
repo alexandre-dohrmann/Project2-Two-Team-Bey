@@ -43,26 +43,18 @@
       <h4 class="lowerDetails2">Exercises: </h4>
 
         <% for(let i = 0; i < workout.exercises.length; i++){ %>
-            <a class="delete" href="/workout/<%=workout._id%>/show"><%=workout.exercises[i]%></a> 
-          </h4>
+            <a class="delete" href="/workout/<%=workout._id%>/show"><%=workout.exercises[i].name%> </a> 
+            <form class="delete" method="POST" action="/workout/<%=workout.exercises[i].name%>?_method=DELETE">
+             <button class="workout-buttons" type="submit">DELETE</button>
+            </form>
         <% } %>
-<<<<<<< HEAD
-       
-         
   </main>
 </br></br>
-<a class="add2" href="/exercise"><button class="workout-buttons2" type="submit">Add Exercise</button></a>
-=======
-        <!-- the add exercise button routes correctly to exercise/index.ejs @ 8am 7/26 -->
-         <a href="/exercise" class="workout-buttons" type="submit">Add Exercise</a>
-  </main></br>
->>>>>>> 51cd00aabc28766ab5164c0af5b76bb110213941
-    
-    
+<a class="add2" href="/exercise"><button class="workout-buttons2" type="submit">Add Exercise</button></a>    
   <footer>
     <ul>
       <li class="nav-item">
-          <a class="nav-link active copyright">Copyright 2018</a>
+          <a class="nav-link active copyright">© 2018 Trainer.</a>
         </li>
     </ul></br>
   </footer>

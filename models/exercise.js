@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const exerciseSchema = new mongoose.Schema({
   name: {type: String},
   photo: {type: String},
-  video: {type: String}
+  video: {type: String},
+  description: {type: String},
 });
 
 
