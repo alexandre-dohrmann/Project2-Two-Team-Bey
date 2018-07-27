@@ -118,6 +118,42 @@ h4 {
     background-attachment: fixed;
     background-position: center center;
 }
+.background-ex {
+    background-image: url('/images/background_ex.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+.background-ex-home {
+    background-image: url('/images/background_ex_home.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+.background-prof{
+    background-image: url('/images/background_prof.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+.background-work-home{
+    background-image: url('/images/background_work_home.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+.background-work-new{
+    background-image: url('/images/background_work_new.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+}
+
 .workouts {
     text-align: left;
 }
@@ -215,6 +251,13 @@ h5 {
 ul {
     padding: 0;
     margin-top: -10px;
+}
+.ex-example {
+    max-height: 300px;
+    max-width: 300px;
+}
+.ex-deets {
+    text-align: center;
 }
 
 /**********************************/
