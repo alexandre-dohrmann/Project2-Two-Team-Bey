@@ -16,7 +16,7 @@
             <li>
 			<a href="/exercise/<%=exercise[i].id%>"><%=exercise[i].name%></a>
 			<!-- below is the route the exercise takes to get to workout/show.ejs -->
-			<form method="POST" action="/exercise/<%= exercise[i].id%>/add-to-workout" >
+			<form method="POST" action="/exercise/<%= exercises[i].id%>/add-to-workout" >
 			<input type="submit" value="Add To Workout"/>
 			</form>
             </li><br/>
