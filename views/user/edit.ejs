@@ -22,10 +22,8 @@
       </nav></br>
     </header>
   <main>
-      <form action="/user/<%=user._id%>/profile" method="POST">
+      <form method="POST" action="/user/profile?_method=PUT">
         Name: <input type="text" name="name" value="<%user.name%>"/><br/><br/>
-        Username: <input type="text" name="username" value="<%user.username%>"/><br/><br/>
-        Password: <input type="text" name="password" value="<%user.password%>"/><br/><br/>
         Email: <input type="text" name= "email" value="<%user.email%>"/><br/><br/>
         Phone Number: <input type="text" name="phoneNumber" value="<%user.phoneNumber%>"/><br/><br/>
         <input type="submit" value="Submit Changes"/><br/>   

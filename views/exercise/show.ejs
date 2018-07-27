@@ -29,7 +29,6 @@
   	</div></br>
 	<div class="ex-deets">
 		<h4 class="details ex-deets"><%=exercise.name%> - Video Example</h4></br>
-		<% for(let i = 0; i < exerciseList.length; i++){ %>
 			<% if (exercise.name === "Squat") { %>
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/jGQ8_IMPQOY" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 			<% } %>
@@ -51,8 +50,7 @@
 			<% if (exercise.name === "Plank") { %>	
 				<iframe width="560" height="315" src="https://www.youtube.com/embed/B296mZDhrP4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 			<% } %>
-		<% } %> 
-		<h5><%=exercise.description%></h5>
+	<h5 class="details ex-deets">Exercise Description: </h5><h5><%=exercise.description%></h5>
 	</div></br>
   </main></br></br></br>
   <footer>

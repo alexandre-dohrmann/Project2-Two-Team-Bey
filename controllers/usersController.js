@@ -39,14 +39,29 @@ router.get('/profile/edit', async (req, res) => {
 });
 
 
-//Update Route
+// Update Route
 router.put("/profile", (req, res) => {
-  User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedUser)=> {
-    console.log(updatedUser, "this is the updatedUser");
-    res.redirect("/user");
+  User.findByIdAndUpdate(req.session.userId, 
+                            {name: req.body.name, 
+                            password: req.body.password, 
+                            email: req.body.email,
+                            phoneNumber: req.body.phoneNumber}, 
+  {new: true}, (err, updatedUser) => {
+      if(err){
+        res.send(err);
+      }else{
+      console.log(updatedUser, "this is the updatedUser");
+      res.redirect("/user/profile");
+      }
   });
 });
 
+// router.put('/profile', (req, res) => {
+//   User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedAuthor)=> {
+//     console.log(updatedUser, ' this is updatedAuthor');
+//     res.redirect('/profile');
+//   });
+// });
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // RETURN TO THIS LATER!!!!!!!!!!

@@ -213,7 +213,9 @@ form {
 	font-size: 30px;
 
 }
-
+.delete2 {
+    line-height: 1.5;
+}
 .client-workouts {
 	font-family: 'Barlow Condensed', sans-serif;
 	font-size: 20px;
@@ -225,7 +227,9 @@ form {
 	font-size: 20px;
 	border-radius: 5px;
     margin-left: 10px;
-    line-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 h5 {

@@ -46,7 +46,7 @@
 
         <% for(let i = 0; i < workout.exercises.length; i++){ %>
             <a class="delete" href="/exercise"><%=workout.exercises[i].name%> </a> 
-            <form class="delete" method="POST" action="/workout/<%=workout.exercises[i].name%>?_method=DELETE">
+            <form class="delete2" method="POST" action="/workout/<%=workout.exercises[i].name%>?_method=DELETE">
              <button class="workout-buttons" type="submit">DELETE</button>
             </form>
         <% } %>
