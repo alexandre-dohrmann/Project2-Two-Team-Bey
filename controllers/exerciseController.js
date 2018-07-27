@@ -60,7 +60,8 @@ router.get("/:id", async (req, res) => {
   try{
     const foundExercise = await Exercise.findById(req.params.id);
     res.render("exercise/show.ejs", {
-     exercise: foundExercise
+      exercise: foundExercise,
+      exerciseList: Exercise
     });
   } catch(err){
     res.send(err);

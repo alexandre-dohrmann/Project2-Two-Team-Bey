@@ -6,7 +6,7 @@
   <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed|Montserrat+Alternates" rel="stylesheet">
 <title>Trainer. - User Profile</title>
 </head>
-<body class="container">
+<body class="container background-work-home">
   <header></br>
     <h1 class="nav justify-content-center title">Trainer.</h1></br>
     <h1 class="nav justify-content-center subtitle"><%=username%>'s Workouts Page</h1></br>
@@ -17,27 +17,28 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="/user/profile">Profile <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link" href="/workout/new">Add A Workout</a>
+          <a class="nav-item nav-link active" href="/workout/new">Add A Workout</a>
         </div>
       </div>
     </nav></br>
   </header>
   <main>
-      <h4 class="details"><%=username%>'s List of Client-Workouts:</h4></br>
+      <h4 class="details">Client-Workouts:</h4></br>
       <ul>
         <% for(let i = 0; i < workout.length; i++){ %>
           <li class="client-workouts">
             <a class="delete" href="/workout/<%=workout[i]._id%>/show"><%=workout[i].name%></a>
+            <a class="delete" href="/workout/<%=workout[i].name%>/edit"><button class="workout-buttons" type="submit">Edit</button></a>
             <form class="delete" method="POST" action="/workout/<%=workout[i]._id%>?_method=DELETE">
              <button class="workout-buttons" type="submit">DELETE</button></form>
           </li>
         <% } %>
       </ul>
-    </main>
+    </main></br></br>
   <footer>
     <ul>
       <li class="nav-item">
-          <a class="nav-link active copyright">Copyright 2018</a>
+          <a class="nav-link active copyright">© 2018 Trainer.</a>
         </li>
     </ul></br>
   </footer>
