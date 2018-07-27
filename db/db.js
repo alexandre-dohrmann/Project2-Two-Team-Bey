@@ -1,10 +1,10 @@
 const mongoose = require('mongoose');
 
 const Exercise = require("../models/exercise.js");
-const ExerciseData = require("../models/ExerciseData.js");
+const ExerciseData = require("../models/exerciseData.js");
 
 // create our db and connect
-mongoose.connect('mongodb://localhost/project2');
+
 
 mongoose.connection.on('connected', () => {
   console.log('Beyonce is here yall!');

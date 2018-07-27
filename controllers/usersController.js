@@ -8,9 +8,25 @@ const Exercise = require("../models/exercise.js");
 
 
 
+
+
+
+//Edit Route
+router.get('/profile/edit', async (req, res) => {
+  try {
+    const foundUser = await User.findOne({'username': req.session.username});
+      res.render('user/edit.ejs', {
+        user: foundUser,
+        username: req.session.username,
+      });
+  } catch (err) {
+      res.send(err)
+    }
+});
+
 //SHOW Route --detailed page
 
-router.get('/profile', async (req, res)=>{
+router.get('/profile', async (req, res)=>{//dont touch
   try  {
     const foundUser = await User.findOne({'username': req.session.username});
     req.session.user = foundUser;
@@ -23,37 +39,22 @@ router.get('/profile', async (req, res)=>{
   }
 })
 
-
-//Edit Route
-router.get('/profile/edit', async (req, res) => {
-  try {
-    const foundUser = await User.findOne({'username': req.session.username});
-    req.session.user = foundUser;
-      res.render('user/edit.ejs', {
-        user: foundUser,
-        username: req.session.username,
-      });
-  } catch (err) {
-      res.send(err)
-    }
-});
-
-
 // Update Route
 router.put("/profile", (req, res) => {
-  User.findByIdAndUpdate(req.session.userId, 
-                            {name: req.body.name, 
-                            password: req.body.password, 
-                            email: req.body.email,
-                            phoneNumber: req.body.phoneNumber}, 
-  {new: true}, (err, updatedUser) => {
+  User.findByIdAndUpdate(req.session.userId, //this is from the auth controller
+                          {name: req.body.name, 
+                          //usernames should NOT be editable  
+                          password: req.body.password, 
+                          email: req.body.email,
+                          phoneNumber: req.body.phoneNumber},
+    {new: true}, (err, updatedUser)=> {
       if(err){
         res.send(err);
       }else{
-      console.log(updatedUser, "this is the updatedUser");
-      res.redirect("/user/profile");
-      }
-  });
+    console.log(updatedUser, "this is the updatedUser");
+    res.redirect("/user/profile");
+  }
+})  
 });
 
 // router.put('/profile', (req, res) => {
