@@ -39,7 +39,7 @@ router.get('/profile', async (req, res)=>{//dont touch
   }
 })
 
-//Update Route
+// Update Route
 router.put("/profile", (req, res) => {
   User.findByIdAndUpdate(req.session.userId, //this is from the auth controller
                           {name: req.body.name, 
@@ -57,6 +57,12 @@ router.put("/profile", (req, res) => {
 })  
 });
 
+// router.put('/profile', (req, res) => {
+//   User.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedAuthor)=> {
+//     console.log(updatedUser, ' this is updatedAuthor');
+//     res.redirect('/profile');
+//   });
+// });
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // ++++++++++++++++++++++++++++++++++++++++++++++
 // RETURN TO THIS LATER!!!!!!!!!!

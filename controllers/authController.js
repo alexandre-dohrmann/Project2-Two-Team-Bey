@@ -23,6 +23,7 @@ router.post('/login', (req, res) => {
     if(user){
         if(bcrypt.compareSync(req.body.password, user.password)){
           req.session.username = user.username;
+          req.session.userId = user.id;
           req.session.userId = user.id //the argument before the equal sign is a potato
           req.session.loggedIn = true;
           res.redirect('/workout')
