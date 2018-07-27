@@ -55,6 +55,8 @@ router.post("/:id/add-to-workout", async (req, res) => {
   }
 })
 
+
+
 //show route --detailed page
 router.get("/:id", async (req, res) => {
   try{

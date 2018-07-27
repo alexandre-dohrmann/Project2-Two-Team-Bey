@@ -78,6 +78,7 @@ router.get('/:id/show', async (req, res)=>{
   try  {
     const foundUser = await User.find({});
     const foundWorkout = await Workout.findById(req.params.id);
+    const foundExercise = await Exercise.findById(req.params.id);
     req.session.workout = foundWorkout
       console.log(foundWorkout + "this is foundWorkout")//this happens
       console.log(req.params.id + "this is req.params")//this happens
@@ -85,6 +86,7 @@ router.get('/:id/show', async (req, res)=>{
         user: foundUser,
         username: req.session.username,
         workout: foundWorkout,
+        exercise: foundExercise
         //DO WE NEED TO HAVE EXERCISE REPRESENTED HERE TO HAVE THE EXERCISES POPULATE?
       });
   } catch (err){
