@@ -17,6 +17,8 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link active" href="/workout">Home<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="/workout/<%=workout._id%>/edit">Edit<span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active" href="/auth/logout">Logout</a>
         </div>
       </div>
     </nav></br>
@@ -43,7 +45,7 @@
       <h4 class="lowerDetails2">Exercises: </h4>
 
         <% for(let i = 0; i < workout.exercises.length; i++){ %>
-            <a class="delete" href="/workout/<%=workout._id%>/show"><%=workout.exercises[i].name%> </a> 
+            <a class="delete" href="/exercise"><%=workout.exercises[i].name%> </a> 
             <form class="delete" method="POST" action="/workout/<%=workout.exercises[i].name%>?_method=DELETE">
              <button class="workout-buttons" type="submit">DELETE</button>
             </form>

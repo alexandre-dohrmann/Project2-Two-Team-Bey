@@ -16,8 +16,9 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
-          <a class="nav-item nav-link active" href="/user/profile">Profile <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link active float-left" href="/user/profile">Profile <span class="sr-only">(current)</span></a>
           <a class="nav-item nav-link active" href="/workout/new">Add A Workout</a>
+          <a class="nav-item nav-link active" href="/auth/logout">Logout</a>
         </div>
       </div>
     </nav></br>
@@ -28,7 +29,6 @@
         <% for(let i = 0; i < workout.length; i++){ %>
           <li class="client-workouts">
             <a class="delete" href="/workout/<%=workout[i]._id%>/show"><%=workout[i].name%></a>
-            <a class="delete" href="/workout/<%=workout[i].name%>/edit"><button class="workout-buttons" type="submit">Edit</button></a>
             <form class="delete" method="POST" action="/workout/<%=workout[i]._id%>?_method=DELETE">
              <button class="workout-buttons" type="submit">DELETE</button></form>
           </li>
