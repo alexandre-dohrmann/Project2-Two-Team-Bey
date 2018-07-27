@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require("../models/users.js");
 const Workout = require("../models/workout.js");
 const Exercise = require("../models/exercise.js");
-const ExerciseData = require("../models/ExerciseData.js");
+const ExerciseData = require("../models/exerciseData.js");
 
 //landing page
 router.get("/", async (req, res) => {
