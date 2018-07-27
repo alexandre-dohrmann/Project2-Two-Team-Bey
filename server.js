@@ -1,5 +1,6 @@
 const express = require('express');
 const app = express();
+const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
@@ -10,6 +11,7 @@ require('./db/db');
 // BACKED SESSION STORAGE (CONNECT+EXPRESS:
 // +++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/project_2_session_test';
 const MongoDBStore = require('connect-mongodb-session')(session);
 const store = new MongoDBStore({
   uri: 'mongodb://localhost:27017/project_2_session_test',
@@ -59,6 +61,6 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
-app.listen(3000, () => {
-  console.log('App is listening on port 3000');
+app.listen(port, () => {
+  console.log('App is listening');
 });

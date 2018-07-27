@@ -4,7 +4,7 @@ const Exercise = require("../models/exercise.js");
 const ExerciseData = require("../models/ExerciseData.js");
 
 // create our db and connect
-mongoose.connect('mongodb://localhost/project2');
+mongoose.connect(mongoUri);
 
 mongoose.connection.on('connected', () => {
   console.log('Beyonce is here yall!');
