@@ -6,11 +6,13 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 require('./db/db');
 
+
 // +++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++
 // BACKED SESSION STORAGE (CONNECT+EXPRESS:
 // +++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++
+mongoose.connect(mongoUri);
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/project_2_session_test';
 const MongoDBStore = require('connect-mongodb-session')(session);
 const store = new MongoDBStore({
