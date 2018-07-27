@@ -16,6 +16,7 @@
 
 header {
     margin-top: 10px;
+
 }
 
 h1 {
@@ -30,6 +31,7 @@ h1 {
 	font-size: 40px;
 	letter-spacing: 0;
 }
+
 .subtitle-home {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 20px;
@@ -267,7 +269,6 @@ ul {
     text-align: center;
 }
 
-
 /**********************************/
 /*FOOTER*/
 /**********************************/
@@ -280,4 +281,6 @@ ul {
 .nav-item {
     font-family: 'Barlow Condensed', sans-serif;
     list-style-type: none;
+
     font-size: 12px;
+
