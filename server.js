@@ -17,11 +17,10 @@ const mongoose = require('mongoose');
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/project_2_session_test';
 mongoose.connect(mongoUri);
 const MongoDBStore = require('connect-mongodb-session')(session);
-const store = new MongoDBStore({
-  url: process.env.MONGOLAB_URI,
-  //uri: 'mongodb://localhost:27017/project_2_session_test',
-  collection: 'mySessions'
-});
+// const store = new MongoDBStore({
+//   uri: 'mongodb://localhost:27017/project_2_session_test',
+//   collection: 'mySessions'
+// });
 
 store.on('connected', function() {
   store.client;
@@ -37,7 +36,9 @@ app.use(session({
   cookie: {
     maxAge: 1000 * 60 * 60 * 24
   },
-  store: store,
+  store: new MongoStore({
+    url: process.env.MONGOLAB_URI //new code
+  }),
   resave: true,
   saveUninitialized: true
 }));
