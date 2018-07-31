@@ -17,6 +17,7 @@ const mongoose = require('mongoose');
 const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/project_2_session_test';
 mongoose.connect(mongoUri);
 const MongoDBStore = require('connect-mongodb-session')(session);
+
 const store = new MongoDBStore({
   uri: 'mongodb://localhost:27017/project_2_session_test',
   collection: 'mySessions'
@@ -36,7 +37,7 @@ app.use(session({
   cookie: {
     maxAge: 1000 * 60 * 60 * 24
   },
-  store: new MongoStore({
+  store: new MongoDBStore({
     url: process.env.MONGOLAB_URI //new code
   }),
   resave: true,
