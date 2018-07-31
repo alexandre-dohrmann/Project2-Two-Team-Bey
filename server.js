@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
 const assert = require('assert');
-require('./db/db');
+require('./db/db'); 
 
 
 // +++++++++++++++++++++++++++++++++++++++++++
@@ -18,7 +18,8 @@ const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/project_2
 mongoose.connect(mongoUri);
 const MongoDBStore = require('connect-mongodb-session')(session);
 const store = new MongoDBStore({
-  uri: 'mongodb://localhost:27017/project_2_session_test',
+  url: process.env.MONGOLAB_URI,
+  //uri: 'mongodb://localhost:27017/project_2_session_test',
   collection: 'mySessions'
 });
 
