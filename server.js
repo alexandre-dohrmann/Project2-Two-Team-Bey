@@ -4,6 +4,9 @@ const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
 
+require('./db/db'); 
+
+
 const port = process.env.PORT || 7000;
 require('./db/db');
 
@@ -12,6 +15,7 @@ app.use(session({
   secret: 'this is a secret',
   resave: false, //only save when the session object has been modified
   saveUninitialized: false //user for login sessions, we only want to save when we modify the session
+
 }));
 
 
