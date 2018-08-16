@@ -4,6 +4,7 @@ const Exercise = require("../models/exercise.js");
 const ExerciseData = require("../models/exerciseData.js");
 
 // create our db and connect
+// ****Greyed this out afterwards***
 // mongoose.connect('mongodb://localhost/project2');
 
 
