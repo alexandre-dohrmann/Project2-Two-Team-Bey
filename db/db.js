@@ -4,7 +4,12 @@ const Exercise = require("../models/exercise.js");
 const ExerciseData = require("../models/exerciseData.js");
 
 // create our db and connect
-mongoose.connect('mongodb://localhost/project2');
+// mongoose.connect('mongodb://localhost/project2');
+
+
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/project_2_session_test';
+mongoose.connect(mongoUri);
+
 
 
 mongoose.connection.on('connected', () => {
