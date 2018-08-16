@@ -1,47 +1,17 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 8000;
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
-const assert = require('assert');
+
+const port = process.env.PORT || 7000;
 require('./db/db');
 
 
-// +++++++++++++++++++++++++++++++++++++++++++
-// +++++++++++++++++++++++++++++++++++++++++++
-// BACKED SESSION STORAGE (CONNECT+EXPRESS:
-// +++++++++++++++++++++++++++++++++++++++++++
-// +++++++++++++++++++++++++++++++++++++++++++
-const mongoose = require('mongoose');
-const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/project_2_session_test';
-mongoose.connect(mongoUri);
-const MongoDBStore = require('connect-mongodb-session')(session);
-
-const store = new MongoDBStore({
-  uri: 'mongodb://localhost:27017/project_2_session_test',
-  collection: 'mySessions'
-});
-
-store.on('connected', function () {
-  store.client;
-});
-
-store.on('error', function (error) {
-  assert.ifError(error);
-  assert.ok(false);
-});
-
 app.use(session({
-  secret: 'This is a secret',
-  cookie: {
-    maxAge: 1000 * 60 * 60 * 24
-  },
-  store: new MongoDBStore({
-    url: process.env.MONGOLAB_URI //new code
-  }),
-  resave: true,
-  saveUninitialized: true
+  secret: 'this is a secret',
+  resave: false, //only save when the session object has been modified
+  saveUninitialized: false //user for login sessions, we only want to save when we modify the session
 }));
 
 
@@ -69,5 +39,5 @@ app.get('/', (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log('App is listening');
-});
+  console.log(`Server is listening on port: ${port}`);
+})
