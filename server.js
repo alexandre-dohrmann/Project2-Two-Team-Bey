@@ -1,9 +1,10 @@
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 8000;
+const port = process.env.PORT || 3000;
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const assert = require('assert');
 require('./db/db');
 
 
@@ -12,8 +13,11 @@ require('./db/db');
 // BACKED SESSION STORAGE (CONNECT+EXPRESS:
 // +++++++++++++++++++++++++++++++++++++++++++
 // +++++++++++++++++++++++++++++++++++++++++++
-
+const mongoose = require('mongoose');
+const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/project_2_session_test';
+mongoose.connect(mongoUri);
 const MongoDBStore = require('connect-mongodb-session')(session);
+
 const store = new MongoDBStore({
   uri: 'mongodb://localhost:27017/project_2_session_test',
   collection: 'mySessions'
@@ -33,7 +37,9 @@ app.use(session({
   cookie: {
     maxAge: 1000 * 60 * 60 * 24
   },
-  store: store,
+  store: new MongoDBStore({
+    url: process.env.MONGOLAB_URI //new code
+  }),
   resave: true,
   saveUninitialized: true
 }));
@@ -62,6 +68,4 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
-app.listen(port, () => {
-  console.log('App is listening');
-});
+app.listen(process.env.PORT || 3000);
